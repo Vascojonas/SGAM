@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}">
+  
+<head>
+    <meta charset="UTF-8">
+</head>
+<body >
+
+    <div class="container" layout:fragment="corpo">
+        <main class="py-5">
+            <div class="container">
+              <div class="row justify-content-md-center">
+                <div class="col-md-8">
+                  <div class="card">
+                    <div class="card-header card-title">
+                      <strong>Especificações da madeira</strong>
+                    </div>           
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group row">
+                            <label for="tipo_madeira" class="col-md-3 col-form-label">Tipo de madeira</label>
+                            <div class="col-md-9">
+                              <select type="text" name="tipo_madeira" id="tipo_madeira" class="form-control">
+                                    <option>Selecione o tipo de madeira</option>
+                                    <option id=""> Chafuta</option>
+                                    <option id=""> Umbila</option>
+                                    <option id=""> Jambire</option>
+                                    <option id=""> Pinho</option>
+                              </select>
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                            <label for="comprimento" class="col-md-3 col-form-label">Comprimento</label>
+                            <div class="col-md-9">
+                              <input type="number" name="comprimento" id="comprimento" class="form-control" placeholder="Digite o comprimento em cm">
+                            </div>
+                          </div>
+                          
+                          <div class="form-group row">
+                            <label for="largura" class="col-md-3 col-form-label">Largura</label>
+                            <div class="col-md-9">
+                              <input type="number" name="largura" id="largura" class="form-control" placeholder="Digite a largura em cm">
+                            </div>
+                          </div>
+      
+      
+                          <div class="form-group row">
+                            <label for="expressura" class="col-md-3 col-form-label">Expressura</label>
+                            <div class="col-md-9">
+                              <input type="number" name="expressura" id="expressura" class="form-control" placeholder="Digite a expressura em cm">
+                            </div>
+                          </div>
+      
+                          
+                          <hr>
+                          <div class="form-group row mb-0">
+                            <div class="col-md-9 offset-md-3">
+                                <button type="submit" class="btn btn-primary btn-block">Pesquisar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+    </div>
+</body>
+</html>
