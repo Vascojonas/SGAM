@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{layout_admin}">
+ 
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    
+  <div class="col-10" layout:fragment="corpo">
+  
+  <h3 class="mt-4">Cadastrar Funcionários</h3>
+  <div class="container clearfix">
+  	
+  	<hr>
+  	<a href="/admin/funcionarios/listar" class="btn btn-success float-right">Todos funcionarios</a>
+  </div>
+  
+  
+    <form th:action="@{/admin/funcionarios/salvar}" th:object="${funcionario}" method="POST">
+       	
+       	<div class="row container">
+ 
+	        <div class="col-6"> <!--Inicio columna a equerda-->
+	        
+	            <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text form-control">Nome</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite o nome" th:field="*{nome}" />
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Apelido</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite o apelido" th:field="*{apelido}"  />
+	            </div>
+	            
+	            <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Nº BI</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Bilhete de identidade (BI)" th:field="*{bi}" />
+	            </div>
+	            
+	          
+	            <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Cidade</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite a cidade" th:field="*{cidade}" />
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Bairro</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite o bairro" th:field="*{bairro}"  />
+	            </div>
+	            
+	             <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Quarteirão</span>
+	                </div>
+	                <input class="form-control" type="Number" placeholder="Numero do quarteirão" th:field="*{quarteirao}"  />
+	                
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Casa</span>
+	                </div>
+	                <input class="form-control" type="number" placeholder="Numero da casa" th:field="*{casa}" />
+	            </div>
+	            
+	           
+	             <div class="input-group m-3"> 
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Sexo</span>
+	                </div>
+	                <select id="sexo"  class="form-control" th:field="*{sexo}">
+	                	<option value="">Selecione o sexo</option>
+	                	<option value="M">Masculino</option>
+	                	<option value="F">Femenino</option>
+	                </select>
+	            </div>
+	           
+	            <div class="input-group m-3"> 
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Data de Nascimento</span>
+	                </div>
+	                <input class="form-control" type="date" th:field="*{dataNascimento}" />
+	            </div>
+	            
+	            
+	        </div> <!--Fim columna a Esquerda-->
+	
+	        <div class="col-6"> <!--Inicio columna a direita-->
+	  
+	            <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Username</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite o username"  th:field="*{usuario.username}" />
+	            </div>
+	            
+	
+	   
+
+				<div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Password</span>
+	                </div>
+	                <input class="form-control" type="text" id="password" placeholder="Password"  th:field="*{usuario.password}"/>
+	                <input class="form-control" type="text"  id="confirmar" placeholder="Confimar password"/>
+	            </div>
+	      
+	            <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Data de entrada</span>
+	                </div>
+	                <input class="form-control" type="date"  th:field="*{dataInicio}"/>
+	            </div>
+	            
+	            <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Data de saída</span>
+	                </div>
+	                <input class="form-control" type="date"  th:field="*{dataFim}"/>
+	            </div>
+	            
+	            <div class="input-group m-3"> 
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Estabelecimento</span>
+	                </div>
+	                <select id="estabelecimento" name="estabelecimento" class="form-control" th:field"*{estabelecimento}">
+	                	<option value="">Selecione o estabelecimento</option>
+	                	<option th:each="e : ${estabelecimentos}" th:value="${e.id}"  th:text="${e.nome}">Aldo station</option>
+	                	
+	                </select>
+	            </div>
+	       		
+	       		<div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Telefone</span>
+	                </div>
+	                <input class="form-control" type="number" placeholder="Telefone prinipal" th:field="*{telefone}" />
+	                <input class="form-control" type="number" placeholder="Telefone opcional"  th:field="*{telefone_opcional}"/>
+	            </div>
+	            
+	            <div class="input-group m-3">
+	                <button type="submit"  class="btn bg-a1 form-control" >cadastrar</button>
+	            </div>
+	        	
+	        </div> <!--Fim columna a direita-->
+	
+			
+       </div>
+    </form>
+  </div>
+
+</body>
+
+</html>

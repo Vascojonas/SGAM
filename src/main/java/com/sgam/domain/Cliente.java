@@ -25,10 +25,10 @@ public class Cliente extends AbstractEntity<Long> {
 	@Column(name= "bairro", nullable=false, unique=false, length=64)
 	private String bairro;
 	
-	@Column(name= "telefone", nullable=false, length=9)
+	@Column(name= "telefone", nullable=false)
 	private String telefone;
 	
-	@Column(name= "telefone_opcional", nullable=true, length=9)
+	@Column(name= "telefone_opcional")
 	private String telefone_opcional;
 	
 	

@@ -6,8 +6,10 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 
 public class AbstractDao<T, PK extends Serializable> {
 	@SuppressWarnings("unchecked")
@@ -40,12 +42,23 @@ public class AbstractDao<T, PK extends Serializable> {
 		return entityManager.find(entityClass, id);
 	}
 	
+/*
+	public Usuario findByUsername(String username) {
+		
+			javax.persistence.Query query = entityManager.createQuery(
+				      "SELECT u FROM Usuario u WHERE u.username = 'username'");
+				 return (Usuario) query.getSingleResult();
+	}
+	
+	*/
+	
 	public List<T> findAll() {
 		
 		return entityManager
 				.createQuery("from " + entityClass.getSimpleName(), entityClass)
 				.getResultList();
-	}	
+	}
+	
 	
 	protected List<T> createQuery(String jpql, Object... params) {
 		TypedQuery<T> query = entityManager.createQuery(jpql, entityClass);

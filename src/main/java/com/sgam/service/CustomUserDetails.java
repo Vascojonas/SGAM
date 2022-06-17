@@ -1,21 +1,38 @@
 package com.sgam.service;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.sgam.domain.Usuario;
 
-@SuppressWarnings("serial")
+
+
 public class CustomUserDetails implements UserDetails {
 	
-	Usuario user;
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+private	Usuario user;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		user.getNivel_acesso();
-		return null;
+		return user.getRoles().stream().map(role-> new SimpleGrantedAuthority("ROLE_"+role))
+				.collect(Collectors.toList());
+		
+	}
+
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
 	}
 
 	@Override
@@ -53,5 +70,6 @@ public class CustomUserDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
 
 }

@@ -9,26 +9,26 @@ import javax.persistence.*;
 @Table(name="Estabelecimentos")
 public class Estabelecimento extends AbstractEntity<Long> {
 
-	@Column(name= "nome", nullable=true, length=64)
+	@Column(name= "nome")
 	private String nome;
 	
-	@Column(name= "provincia", nullable=false, length=64)
+	@Column(name= "provincia")
 	private String provincia;
 	
-	@Column(name= "cidade", nullable=false, length=64)
+	@Column(name= "cidade")
 	private String cidade;
 	
-	@Column(name= "bairro", nullable=false, length=64)
+	@Column(name= "bairro")
 	private String bairro;
 	
-	@Column(name= "avenida", nullable=false)
-	private int avenida;
+	@Column(name= "avenida")
+	private String avenida;
 	
 	@ManyToOne()
 	@JoinColumn(name="id_gestor_fk")
 	private Gestor gestor;
 	
-	@OneToMany(mappedBy="estabelecimento")
+	@OneToMany(mappedBy="estabelecimento",  cascade = CascadeType.ALL)
 	private List <Funcionario> funcionarios;
 
 	public String getProvincia() {
@@ -63,11 +63,13 @@ public class Estabelecimento extends AbstractEntity<Long> {
 		this.bairro = bairro;
 	}
 
-	public int getAvenida() {
+
+
+	public String getAvenida() {
 		return avenida;
 	}
 
-	public void setAvenida(int avenida) {
+	public void setAvenida(String avenida) {
 		this.avenida = avenida;
 	}
 

@@ -10,82 +10,63 @@
     
   <div class="col-10" layout:fragment="corpo">
   
-  <div class="mt-4">
-  	<h3>Cadastrar estabelecimento</h3>
+  <h3 class="mt-4">Estabelecimento</h3>
+  <div class="container clearfix">
+  	
+  	<hr>
+  	<a href="/admin/estabelecimentos/listar" class="btn btn-success float-right">Todos estabelecimentos</a>
   </div>
-  <hr>
   
-    <form th:action="@{/estabelecimentos/salvar}" th:object="${estabelecimento}" method="POST">
-        <main class="py-3">
-            <div class="container">
-              <div class="row justify-content-md-center">
-                <div class="col-md-8">
-                  <div class="card">
-                    <div class="card-header card-title bg-a1 text-white">
-                      <strong>Dados do estabelecimento</strong>
-                    </div>           
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-md-12">
-                         
-                          <div class="form-group row">
-                            <label for="nome" class="col-md-3 col-form-label">Nome</label>
-                            <div class="col-md-9">
-                              <input type="text" id="nome" class="form-control"
-                               placeholder="Digite o nome do estabelecimento" />
-                            </div>
-                          </div>
-                          
-                          <div class="form-group row">
-                            <label for="provincia" class="col-md-3 col-form-label">Província</label>
-                            <div class="col-md-9">
-                              <input type="text"  id="provincia" class="form-control"
-                               placeholder="Digite a pronvíncia do establecimento" >
-                            </div>
-                          </div>
-                          
-                          <div class="form-group row">
-                            <label for="cidade" class="col-md-3 col-form-label">Cidade</label>
-                            <div class="col-md-9">
-                              <input type="text"  id="cidade" class="form-control" 
-                              placeholder="Digite a cidade do estabelecimento" >
-                            </div>
-                          </div>
-                          
-                          <div class="form-group row">
-                            <label for="bairro" class="col-md-3 col-form-label">Bairro</label>
-                            <div class="col-md-9">
-                              <input type="text"  id="bairro" class="form-control"
-                               placeholder="Digite o bairro do estabelecimento" >
-                            </div>
-                          </div>
-
-                          <div class="form-group row">
-                            <label for="avenida" class="col-md-3 col-form-label">Avenida </label>
-                            <div class="col-md-9">
-                              <input type="text"  id="avenida" class="form-control" 
-                              placeholder="Digite a avenida do estabelecimento"  >
-                            </div>
-                  
-                          </div>
-                          
-                          
-                          <hr>
-      					
-                          <div class="form-group row mb-0">
-                            <div class="col-md-9 offset-md-3">
-                                <button type="submit" class="btn btn-primary btn-block bg-a1">Cadastrar</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-         </main>
+  
+    <form th:action="@{/admin/estabelecimentos/salvar}" th:object="${estabelecimento}" method="POST">
+       	
+       	<div class="container">
+       	
+       		<div class="col-10 offset-1 ">
+       			<div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text form-control">Nome</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite o nome" th:field="*{nome}" />
+	                
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Pronvíncia</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite a pronvincia" th:field="*{provincia}"  />
+	            
+	            </div>
+          
+	            <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Cidade</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite a cidade" th:field="*{cidade}"  />
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Bairro</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite o bairro"  th:field="*{bairro}" />
+	            </div>
+	            
+	             <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Avenida</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite a avenida" th:field="*{avenida}"  />
+	            </div>
+	            
+	             <div class="input-group col-6 offset-6">
+	               <button type="submit"  class="btn bg-a1 form-control" >cadastrar</button>
+	            </div>
+	            
+	                    
+	            
+       		</div>	
+       	
+        </div>
+       
+       
     </form>
+    
   </div>
 
 </body>

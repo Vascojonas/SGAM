@@ -1,7 +1,13 @@
 package com.sgam.domain;
 
 
+
+import java.util.List;
+
 import javax.persistence.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 @SuppressWarnings("serial")
 @Entity
@@ -13,16 +19,18 @@ public class Funcionario extends AbstractEntity<Long> {
 	@JoinColumn(name="id_usuario_fk" ,nullable=false, unique=true)
 	private Usuario usuario;
 	
-	@Column(name= "nome", nullable=false,  length=64)
+	@Column(name= "nome", nullable=false)
 	private String nome; 
 	
-	@Column(name= "apelido", nullable=false,length=64)
+	
+
+	@Column(name= "apelido", nullable=false)
 	private String apelido;
 	
-	@Column(name= "cidade", nullable=false, length=64)
+	@Column(name= "cidade", nullable=false)
 	private String cidade;
 	
-	@Column(name= "bairro", nullable=false, length=64)
+	@Column(name= "bairro", nullable=false)
 	private String bairro;
 	
 	@Column(name= "quarteirao")
@@ -31,20 +39,44 @@ public class Funcionario extends AbstractEntity<Long> {
 	@Column(name= "casa")
 	private int casa;
 	
+	@Column(name= "sexo")
+	private String sexo;
+	
+	@Column(name= "bilhete_identidade")
+	private String bi;
+	
+	@DateTimeFormat(iso= ISO.DATE)
 	@Column(name= "data_nascimento", columnDefinition = "DATE")
 	private String dataNascimento;
 	
+	@DateTimeFormat(iso= ISO.DATE)
 	@Column(name= "data_inicio", columnDefinition = "DATE")
 	private String dataInicio;
 	
+	@DateTimeFormat(iso= ISO.DATE)
 	@Column(name= "data_Fim", columnDefinition = "DATE")
 	private String dataFim;
 	
-	@Column(name= "telefone", nullable=false, length=9)
+	@Column(name= "telefone")
 	private String telefone;
 	
-	@Column(name= "telefone_opcional", nullable=true, length=9)
+	@Column(name= "telefone_opcional")
 	private String telefone_opcional;
+	
+	@ManyToOne()
+	@JoinColumn(name="id_estabelecimento_fk")
+	private Estabelecimento estabelecimento;
+	
+	@OneToMany(mappedBy="funcionario", cascade = CascadeType.ALL)
+	private List<Madeira> madeiras;
+	
+	public String getBi() {
+		return bi;
+	}
+	public void setBi(String bi) {
+		this.bi = bi;
+	}
+		
 	
 	public String getDataFim() {
 		return dataFim;
@@ -65,12 +97,6 @@ public class Funcionario extends AbstractEntity<Long> {
 		this.telefone_opcional = telefone_opcional;
 	}
 
-
-	
-	@ManyToOne()
-	@JoinColumn(name="id_estabelecimento_fk", nullable=false)
-	private Estabelecimento estabelecimento;
-	
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -133,6 +159,13 @@ public class Funcionario extends AbstractEntity<Long> {
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+	
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 
 	public String getDataInicio() {
 		return dataInicio;
@@ -148,6 +181,12 @@ public class Funcionario extends AbstractEntity<Long> {
 
 	public void setEstabelecimento(Estabelecimento estabelecimento) {
 		this.estabelecimento = estabelecimento;
+	}
+	public List<Madeira> getMadeiras() {
+		return madeiras;
+	}
+	public void setMadeiras(List<Madeira> madeiras) {
+		this.madeiras = madeiras;
 	}
 	
 	

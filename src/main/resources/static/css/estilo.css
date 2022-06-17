@@ -2,7 +2,14 @@
     margin: 0;
     padding: 0;
 }
-body,html{height:100%;}
+
+html{
+	height:100%;
+}
+
+body{
+	height:89.5%;
+}
 
 body {
 	font-family: 'Varela Round', sans-serif;
@@ -12,7 +19,6 @@ li{
     padding: 3px;
     padding-left: 10px;
     border-top: 1px solid white;
-    border-bottom: 1px solid white;
     border-collapse: collapse;
 }
 

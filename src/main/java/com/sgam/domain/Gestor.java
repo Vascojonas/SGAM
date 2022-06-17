@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name="Gestores")
@@ -32,19 +35,29 @@ public class Gestor extends AbstractEntity<Long> {
 	@Column(name= "casa")
 	private int casa;
 	
+
+	@Column(name= "sexo")
+	private String sexo;
+	
+	@Column(name= "bilhete_identidade")
+	private String bi;
+	
+	@DateTimeFormat(iso= ISO.DATE)
 	@Column(name= "data_nascimento", columnDefinition = "DATE")
 	private String dataNascimento;
 	
+	@DateTimeFormat(iso= ISO.DATE)
 	@Column(name= "data_inicio", columnDefinition = "DATE")
 	private String dataInicio;
 	
+	@DateTimeFormat(iso= ISO.DATE)
 	@Column(name= "data_Fim", columnDefinition = "DATE")
 	private String dataFim;
 	
-	@Column(name= "telefone", nullable=false, length=9)
+	@Column(name= "telefone", nullable=false)
 	private String telefone;
 	
-	@Column(name= "telefone_opcional", nullable=true, length=9)
+	@Column(name= "telefone_opcional")
 	private String telefone_opcional;
 	
 	public String getDataFim() {
@@ -68,7 +81,7 @@ public class Gestor extends AbstractEntity<Long> {
 
 	
 	
-	@OneToMany(mappedBy ="gestor")
+	@OneToMany(mappedBy ="gestor",  cascade = CascadeType.ALL)
 	private List <Estabelecimento> estabelecimentos;
 	
 
@@ -150,6 +163,21 @@ public class Gestor extends AbstractEntity<Long> {
 	public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
 		this.estabelecimentos = estabelecimentos;
 	}
+	
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	public String getBi() {
+		return bi;
+	}
+	public void setBi(String bi) {
+		this.bi = bi;
+	}
+
+
 	
 	
 	

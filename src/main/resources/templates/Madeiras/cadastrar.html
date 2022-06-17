@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{layout_admin}">
+ 
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    
+  <div class="col-10" layout:fragment="corpo">
+  
+  <h3 class="mt-4">Cadastrar Madeiras</h3>
+  <div class="container clearfix">
+  	
+  	<hr>
+  	<a href="/funcionario/madeiras/listar" class="btn btn-success float-right">Todos Madeiras</a>
+  </div>
+  
+  
+    <form th:action="@{/funcionario/madeiras/salvar}" th:object="${madeira}" method="POST"   enctype="multipart/form-data">
+       	
+       	<div class="container">
+ 
+	        <div class="col-12"> <!--Inicio columna a equerda-->
+	        
+	            <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text form-control">Tipo</span>
+	                </div>
+	                 <select id="tipo"  class="form-control" th:field="*{tipo}">
+	                	<option value="">Selecione o tipo</option>
+	                	<option value="chafuta">Chafuta</option>
+	                	<option value="umbila">Umbila</option>
+	                	<option value="pinho">Pinho</option>
+	                	<option value="jambir">Jambir</option>
+	                </select>
+	                
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Unidade</span>
+	                </div>
+	                <select id="unidade"  class="form-control" th:field="*{unidade}"/>
+	                	<option value="">Selecione a unidade</option>
+	                	 <option value="m">Metros</option>
+	                	<option value="cm">Centímetros</option>
+	                	<option value="mm">Milímetros</option>
+	                </select>
+	                
+	            </div>
+	            
+	            <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Comprimento total</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite o comprimento total" th:field="*{comprimentoTotal}" />
+	                
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Comprimento util</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite o Comprimento util" th:field="*{comprimentoUtil}" />
+	            </div>
+	            
+	      
+	            <div class="input-group m-3">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Largura total</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite a largura total" th:field="*{larguraTotal}" />
+	                
+	                 <div class="input-group-prepend">
+	                    <span class="input-group-text">Largura util</span>
+	                </div>
+	                <input class="form-control" type="text" placeholder="Digite a largura util" th:field="*{larguraUtil}" />
+	            </div>
+	            
+
+	            
+	             <div class="input-group  col-6">
+	                <div class="input-group-prepend">
+	                    <span class="input-group-text">Expressura</span>
+	                </div>
+	                <input class="form-control" type="Number" placeholder="Digite a expressura" th:field="*{expressura}"  />
+	                  
+	            </div>
+	            
+	           
+	             
+	        </div> <!--Fim columna a Esquerda-->
+	       
+	        <div class="input-group mt-3 ml-4">
+	             <h4>Upload de imagens </h4>        
+	        </div>
+
+				        
+	        <div class="row">
+	        	<div class="col-4">
+	        		 <div class="input-group m-3">
+		                <div class="input-group-prepend">
+		                    <span class="input-group-text">Face 1</span>
+		                </div>
+		                <input class="form-control " type="file" accept="image/png, image/jpeg"  onchange="loadFile(event,'img1')" />        
+	           		 </div>
+	           		 <div class="m-3">
+	           			 <img id="img1">
+	          		 </div>    	
+	        	</div>
+	        	
+	        	<div class="col-4">
+	        		<div class="input-group m-3">
+		                <div class="input-group-prepend">
+		                    <span class="input-group-text">Face 2</span>
+		                </div>
+		                <input class="form-control "type="file" accept="image/png, image/jpeg"  onchange="loadFile(event, 'img2')"  />         
+	           		 </div>
+	            
+		            <div class="m-3">
+		           		 <img id="img2">
+		           </div>
+	        	</div>
+	        	
+	        	<div class="col-4">
+	        	
+	        		<div class="input-group m-3">
+		                <div class="input-group-prepend">
+		                    <span class="input-group-text">Expressura</span>
+		                </div>
+		                <input class="form-control " type="file" accept="image/png, image/jpeg"  onchange="loadFile(event,'img3')"/>         
+	           		 </div>
+	            
+		            <div class="m-3">
+		           		 <img id="img3">
+		           </div>
+	        	
+	        	</div>
+	        
+	        </div>
+			
+	      
+       </div>
+       
+       <div class="col-6 offset-6">
+       	
+       		<div class="input-group mt-2">
+	     		 <button type="submit"  class="btn bg-a1 form-control" >cadastrar</button>
+	 		</div>
+       </div>
+    </form>
+    
+  </div>
+
+</body>
+
+</html>

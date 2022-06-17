@@ -3,6 +3,7 @@ package com.sgam.dao;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -13,9 +14,12 @@ public class UsuarioDaoImpl extends AbstractDao<Usuario, Long>  implements Usuar
 
 	@Override
 	public List<Usuario> findByUsername(String username) {
-		
-		return createQuery("select u from usuarios u where u.username=?1", username);
+		TypedQuery<Usuario> query= getEntityManager()
+				.createQuery("select u from Usuario u where u.username= :username", Usuario.class);
+		query.setParameter("username", username);
+		return query.getResultList();
 	}
+
 	
 
 }

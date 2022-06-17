@@ -13,5 +13,7 @@ void save(Gestor gestor);
 	
 	Gestor findById(Long id);
 	
+	List<Gestor> findByUsername(String username);
+	
 	List<Gestor> findAll();
 }
